@@ -44,7 +44,7 @@ export default function Home() {
     <>
       <header className="nav">
         <div className="container nav-inner">
-          <img src={profile.image} alt={profile.name} className="avatar" />
+          {/* <img src={profile.image} alt={profile.name} className="avatar" /> */}
           <a href="#top" className="brand">
             {profile.name}
           </a>
