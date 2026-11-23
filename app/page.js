@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   profile,
   about,
@@ -10,6 +12,14 @@ import {
   education,
   certifications,
 } from "../data/content";
+
+const spendsensePreviews = spendsenseScreens.map((screen) => ({
+  ...screen,
+  html: readFileSync(
+    join(process.cwd(), "public", screen.file.replace(/^\//, "")),
+    "utf8",
+  ),
+}));
 
 function ProjectCard({ p }) {
   return (
@@ -112,11 +122,11 @@ export default function Home() {
           <h3 className="sub">SpendSense app screens</h3>
           <p className="note">Design previews with sample data.</p>
           <div className="screens">
-            {spendsenseScreens.map((s) => (
+            {spendsensePreviews.map((s) => (
               <figure key={s.file} className="screen">
                 <div className="phone">
                   <iframe
-                    src={s.file}
+                    srcDoc={s.html}
                     title={`SpendSense: ${s.title}`}
                     loading="lazy"
                     tabIndex={-1}

@@ -77,8 +77,8 @@ export const aiWork = [
     title: "Enterprise RAG Platform",
     image: "/projects/rag.svg",
     description:
-      "An enterprise RAG platform built with LangChain and LangGraph to orchestrate document ingestion, retrieval and grounded answer generation. Combines vector and semantic search with web search, source citations and confidence scoring, with evaluation workflows to measure answer quality and retrieval relevance.",
-    tags: ["Python", "LangChain", "LangGraph", "Azure OpenAI", "Azure AI Search", "RAG Evaluation", "Confidence Scoring"],
+      "An enterprise RAG platform built with Python, LangChain and LangGraph to orchestrate document ingestion, chunking, retrieval and grounded answer generation. Combines vector and semantic search with web search, citations and confidence scores that can flag weaker answers for review. Evaluation strategy: maintain a reviewed question set, measure answer faithfulness, source support and retrieval relevance, then rerun regression checks after changes to prompts, chunking or retrieval.",
+    tags: ["Python", "LangChain", "LangGraph", "Azure OpenAI", "Azure AI Search", "Chunking Strategies", "Confidence Scores", "RAG Evaluation"],
   },
   {
     title: "Enterprise Document Intelligence",
