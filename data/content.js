@@ -2,7 +2,8 @@
 
 export const profile = {
   name: "Laxmy Narayan",
-  role: "Senior Software Engineer",
+  image: "/profile.jpeg",
+  role: "Full Stack Developer & AI Engineer",
   tagline:
     "I build enterprise full-stack applications and production-grade Generative AI systems on .NET, Python and Azure.",
   location: "Bengaluru, India",
@@ -30,6 +31,13 @@ export const about = [
 // Personal projects, taken from github.com/narine01
 export const projects = [
   {
+    title: "TraceForge",
+    image: "/projects/traceforge.svg",
+    description:
+      "An in-progress workflow automation control plane for authoring, running and monitoring reliable workflows. Includes a visual workflow editor, versioned definitions, live run monitoring, analytics and workspace access controls.",
+    tags: ["React", "Node.js", "NestJS", "PostgreSQL", "Redis", "BullMQ", "Docker"],
+  },
+  {
     title: "SpendSense",
     description:
       "An offline-first Android expense tracker built to explore modern Android development, with two generative AI features: bill scanning that extracts merchant, amount, date and category from a photo or PDF for review before saving, and plain-language Q&A over your own spending.",
@@ -38,6 +46,7 @@ export const projects = [
   },
   {
     title: "SpendSense Backend",
+    image: "/projects/backend.svg",
     description:
       "A small FastAPI service, deployed on Render, that sits between the SpendSense app and the Gemini API so the API key never ships inside the APK.",
     tags: ["Python", "FastAPI", "Gemini API", "Render"],
@@ -45,6 +54,7 @@ export const projects = [
   },
   {
     title: "Netflix Clone",
+    image: "/projects/netflix.svg",
     description:
       "A Netflix-style streaming UI built with Next.js, TypeScript and Tailwind CSS, with Prisma for data access, deployed on Vercel.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "Vercel"],
@@ -65,18 +75,21 @@ export const spendsenseScreens = [
 export const aiWork = [
   {
     title: "Enterprise RAG Platform",
+    image: "/projects/rag.svg",
     description:
-      "An enterprise-grade RAG chatbot for intelligent knowledge retrieval. Covers document ingestion, chunking, embeddings, indexing, retrieval and context management, combining vector and semantic search with web search via Tavily.",
-    tags: ["Python", "LangChain", "Azure OpenAI", "Azure AI Search"],
+      "An enterprise RAG platform built with LangChain and LangGraph to orchestrate document ingestion, retrieval and grounded answer generation. Combines vector and semantic search with web search, source citations and confidence scoring, with evaluation workflows to measure answer quality and retrieval relevance.",
+    tags: ["Python", "LangChain", "LangGraph", "Azure OpenAI", "Azure AI Search", "RAG Evaluation", "Confidence Scoring"],
   },
   {
     title: "Enterprise Document Intelligence",
+    image: "/projects/doc-intelligence.svg",
     description:
       "Automated extraction of structured data from PDF and Excel documents, reducing manual processing effort by roughly 70%.",
     tags: ["Python", "Azure AI Document Intelligence"],
   },
   {
     title: "Enterprise Search",
+    image: "/projects/enterprise-search.svg",
     description:
       "Semantic and vector search across enterprise document repositories: index and indexer design, skillsets, embeddings, metadata filtering and retrieval optimization.",
     tags: ["Azure AI Search", "Vector Search", "Embeddings"],

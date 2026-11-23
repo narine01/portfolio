@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+<rect width="900" height="520" fill="#f4f6fa"/>
+<rect width="900" height="62" fill="#fff"/>
+<circle cx="34" cy="31" r="14" fill="#0d8a72"/>
+<text x="60" y="37" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#172033">DOC INTELLIGENCE</text>
+<text x="812" y="36" font-family="Arial,sans-serif" font-size="13" fill="#647084">Workspace</text>
+<rect x="34" y="90" width="832" height="392" rx="18" fill="#fff" stroke="#e2e7ef"/>
+<text x="66" y="143" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#172033">Extraction review</text>
+<text x="66" y="172" font-family="Arial,sans-serif" font-size="14" fill="#748096">Structured fields · confidence review</text>
+<rect x="66" y="207" width="768" height="58" rx="10" fill="#f8f9fc" stroke="#edf0f5"/>
+<circle cx="94" cy="236" r="13" fill="#0d8a72" opacity=".12"/>
+<circle cx="94" cy="236" r="5" fill="#0d8a72"/>
+<text x="122" y="242" font-family="Arial,sans-serif" font-size="16" fill="#293449">Vendor  Northstar Supplies</text>
+<rect x="66" y="285" width="768" height="58" rx="10" fill="#f8f9fc" stroke="#edf0f5"/>
+<circle cx="94" cy="314" r="13" fill="#0d8a72" opacity=".12"/>
+<circle cx="94" cy="314" r="5" fill="#0d8a72"/>
+<text x="122" y="320" font-family="Arial,sans-serif" font-size="16" fill="#293449">Invoice total  ₹84,250.00</text>
+<rect x="66" y="363" width="768" height="58" rx="10" fill="#f8f9fc" stroke="#edf0f5"/>
+<circle cx="94" cy="392" r="13" fill="#0d8a72" opacity=".12"/>
+<circle cx="94" cy="392" r="5" fill="#0d8a72"/>
+<text x="122" y="398" font-family="Arial,sans-serif" font-size="16" fill="#293449">Due date  18 Dec 2026</text>
+</svg>

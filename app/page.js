@@ -14,6 +14,11 @@ import {
 function ProjectCard({ p }) {
   return (
     <article className="card">
+      {p.image && (
+        <div className="project-image">
+          <img src={p.image} alt={`${p.title} project preview`} loading="lazy" />
+        </div>
+      )}
       <h3>{p.title}</h3>
       <p>{p.description}</p>
       <ul className="tags">
@@ -44,7 +49,6 @@ export default function Home() {
     <>
       <header className="nav">
         <div className="container nav-inner">
-          {/* <img src={profile.image} alt={profile.name} className="avatar" /> */}
           <a href="#top" className="brand">
             {profile.name}
           </a>
@@ -61,6 +65,10 @@ export default function Home() {
       <main className="container" id="top">
         <section className="hero">
           <div>
+            <div className="hero-profile">
+              <img src={profile.image} alt={profile.name} />
+              <span>Full Stack Developer · AI Engineer</span>
+            </div>
             <p className="eyebrow">
               {profile.role} · {profile.location}
             </p>
@@ -95,6 +103,7 @@ export default function Home() {
 
         <section id="projects">
           <h2>Projects</h2>
+          <p className="note">Selected personal projects and engineering work. Preview images are illustrative UI concepts based on each project.</p>
           <div className="grid">
             {projects.map((p) => (
               <ProjectCard key={p.title} p={p} />
