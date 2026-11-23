@@ -12,6 +12,7 @@ import {
   education,
   certifications,
 } from "../data/content";
+import ThemeToggle from "./theme-toggle";
 
 const spendsensePreviews = spendsenseScreens.map((screen) => ({
   ...screen,
@@ -21,215 +22,177 @@ const spendsensePreviews = spendsenseScreens.map((screen) => ({
   ),
 }));
 
-function ProjectCard({ p }) {
+const navigation = [
+  ["overview", "Overview", "⌂"],
+  ["projects", "Projects", "▦"],
+  ["ai-work", "AI systems", "✳"],
+  ["experience", "Experience", "↗"],
+  ["skills", "Toolkit", "⌘"],
+  ["contact", "Contact", "✉"],
+];
+
+function SectionHeading({ eyebrow, title, id }) {
   return (
-    <article className="card">
-      {p.image && (
-        <div className="project-image">
-          <img src={p.image} alt={`${p.title} project preview`} loading="lazy" />
+    <div className="section-heading" id={id}>
+      <div>
+        {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
+        <h2>{title}</h2>
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({ project, index, label = "PROJECT" }) {
+  return (
+    <article className={`project-card ${index === 0 ? "project-card-featured" : ""}`}>
+      {project.image && (
+        <div className="project-visual">
+          <img src={project.image} alt={`${project.title} interface concept`} loading="lazy" />
         </div>
       )}
-      <h3>{p.title}</h3>
-      <p>{p.description}</p>
-      <ul className="tags">
-        {p.tags.map((t) => (
-          <li key={t}>{t}</li>
-        ))}
-      </ul>
-      {(p.live || p.repo) && (
-        <div className="card-links">
-          {p.live && (
-            <a href={p.live} target="_blank" rel="noreferrer">
-              Live ↗
-            </a>
-          )}
-          {p.repo && (
-            <a href={p.repo} target="_blank" rel="noreferrer">
-              Code ↗
-            </a>
-          )}
+      <div className="project-copy">
+        <span className="project-index">{label} {String(index + 1).padStart(2, "0")}</span>
+        <div className="project-title-row">
+          <h3>{project.title}</h3>
+          <span className="arrow-mark" aria-hidden="true">↗</span>
         </div>
-      )}
+        <p>{project.description}</p>
+        <ul className="tags">
+          {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+        </ul>
+        {(project.live || project.repo) && (
+          <div className="card-links">
+            {project.live && <a href={project.live} target="_blank" rel="noreferrer">Live demo <span>↗</span></a>}
+            {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Source code <span>↗</span></a>}
+          </div>
+        )}
+      </div>
     </article>
   );
 }
 
 export default function Home() {
   return (
-    <>
-      <header className="nav">
-        <div className="container nav-inner">
-          <a href="#top" className="brand">
-            {profile.name}
-          </a>
-          <nav>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </div>
-      </header>
-
-      <main className="container" id="top">
-        <section className="hero">
-          <div>
-            <div className="hero-profile">
-              <img src={profile.image} alt={profile.name} />
-              <span>Full Stack Developer · AI Engineer</span>
-            </div>
-            <p className="eyebrow">
-              {profile.role} · {profile.location}
-            </p>
-            <h1>{profile.tagline}</h1>
-            <div className="actions">
-              <a className="btn primary" href="#projects">
-                View my work
-              </a>
-              <a className="btn" href={profile.resumeUrl} download>
-                Download resume
-              </a>
-            </div>
-          </div>
-          <dl className="facts">
-            {highlights.map((h) => (
-              <div key={h.label}>
-                <dt>{h.value}</dt>
-                <dd>{h.label}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
-        <section id="about">
-          <h2>About</h2>
-          {about.map((p) => (
-            <p key={p} className="lead">
-              {p}
-            </p>
+    <div className="portfolio-shell">
+      <aside className="side-rail">
+        <a href="#overview" className="rail-brand" aria-label={`${profile.name} home`}>LN<span>.</span></a>
+        <nav className="rail-nav" aria-label="Portfolio sections">
+          {navigation.map(([id, label, icon]) => (
+            <a href={`#${id}`} key={id} aria-label={label} title={label} className={id === "overview" ? "active" : ""}>
+              <span className="rail-icon" aria-hidden="true">{icon}</span><span className="rail-label">{label}</span>
+            </a>
           ))}
-        </section>
+        </nav>
+        <a className="rail-resume" href={profile.resumeUrl} download aria-label="Download résumé">↓</a>
+      </aside>
 
-        <section id="projects">
-          <h2>Projects</h2>
-          <p className="note">Selected personal projects and engineering work. Preview images are illustrative UI concepts based on each project.</p>
-          <div className="grid">
-            {projects.map((p) => (
-              <ProjectCard key={p.title} p={p} />
-            ))}
-          </div>
-          <h3 className="sub">SpendSense app screens</h3>
-          <p className="note">Design previews with sample data.</p>
-          <div className="screens">
-            {spendsensePreviews.map((s) => (
-              <figure key={s.file} className="screen">
-                <div className="phone">
-                  <iframe
-                    srcDoc={s.html}
-                    title={`SpendSense: ${s.title}`}
-                    loading="lazy"
-                    tabIndex={-1}
-                    sandbox=""
-                    referrerPolicy="no-referrer"
-                  />
+      <main className="dashboard-main">
+        <header className="topbar">
+          <a href="#overview" className="mobile-brand">LN<span>.</span></a>
+          <div className="breadcrumbs"><span>Portfolio</span><b>/</b><strong>Engineering overview</strong></div>
+          <div className="topbar-actions"><ThemeToggle /><a className="topbar-contact" href={`mailto:${profile.email}`}>Let&apos;s talk <span>↗</span></a></div>
+        </header>
+
+        <div className="dashboard-content">
+          <section className="overview-section" id="overview">
+            <div className="overview-topline">
+              <span className="availability"><i /> Open to opportunities</span>
+              <span className="location-label">{profile.location}</span>
+            </div>
+            <div className="overview-hero">
+              <div className="overview-intro">
+                <p className="kicker">FULL-STACK DEVELOPER <span>·</span> AI ENGINEER</p>
+                <h1>Engineering<br /><em>from idea to impact.</em></h1>
+                <p className="hero-description">{profile.tagline}</p>
+                <div className="hero-actions">
+                  <a className="button button-dark" href="#projects">Explore selected work <span>↘</span></a>
+                  <a className="text-link" href={profile.resumeUrl} download>Download résumé <span>↓</span></a>
                 </div>
-                <figcaption>{s.title}</figcaption>
-              </figure>
-            ))}
-          </div>
-          <h3 className="sub">Selected AI engineering work</h3>
-          <div className="grid">
-            {aiWork.map((p) => (
-              <ProjectCard key={p.title} p={p} />
-            ))}
-          </div>
-        </section>
-
-        <section id="experience">
-          <h2>Experience</h2>
-          <ol className="timeline">
-            {experience.map((e) => (
-              <li key={e.role + e.period}>
-                <div className="when">{e.period}</div>
-                <div>
-                  <h3>
-                    {e.role} <span className="muted">· {e.company}</span>
-                  </h3>
-                  <ul className="points">
-                    {e.points.map((pt) => (
-                      <li key={pt}>{pt}</li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section id="skills">
-          <h2>Skills</h2>
-          <div className="skills">
-            {Object.entries(skills).map(([group, items]) => (
-              <div key={group}>
-                <h3>{group}</h3>
-                <ul className="tags">
-                  {items.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="education">
-          <h2>Education</h2>
-          <ol className="timeline">
-            {education.map((e) => (
-              <li key={e.degree}>
-                <div className="when">{e.period}</div>
-                <div>
-                  <h3>{e.degree}</h3>
-                  <p className="muted">
-                    {e.school} · {e.score}
-                  </p>
+              <div className="profile-panel">
+                <div className="profile-panel-top"><span>ENGINEER PROFILE</span><span className="panel-dots">•••</span></div>
+                <img className="profile-photo" src={profile.image} alt={profile.name} />
+                <div className="profile-name">{profile.name}</div>
+                <div className="profile-role">Full Stack Developer &amp; AI Engineer</div>
+                <div className="profile-divider" />
+                <div className="profile-bottom"><span>Building in Bengaluru</span><span className="status-pulse" /></div>
+              </div>
+            </div>
+            <div className="stat-grid">
+              {highlights.map((item, index) => (
+                <div className="stat-card" key={item.label}>
+                  <span className="stat-number">{item.value}</span>
+                  <span className="stat-label">{item.label}</span>
+                  <span className="stat-sequence">0{index + 1}</span>
                 </div>
-              </li>
-            ))}
-          </ol>
-          <h3 className="sub">Certifications &amp; courses</h3>
-          <ul className="tags">
-            {certifications.map((c) => (
-              <li key={c}>{c}</li>
-            ))}
-          </ul>
-        </section>
+              ))}
+            </div>
+          </section>
 
-        <section id="contact" className="contact">
-          <h2>Get in touch</h2>
-          <p className="lead">
-            Open to new opportunities and interesting projects. The best way to
-            reach me is email.
-          </p>
-          <a className="btn primary" href={`mailto:${profile.email}`}>
-            {profile.email}
-          </a>
-          <div className="socials">
-            {profile.links.map((l) => (
-              <a key={l.label} href={l.href} target="_blank" rel="noreferrer">
-                {l.label}
-              </a>
-            ))}
-          </div>
-        </section>
+          <section className="content-section" id="projects">
+            <SectionHeading eyebrow="SELECTED WORK / 2024—26" title="Projects built end to end" />
+            <p className="section-description">A mix of full-stack products and applied AI systems. Each project is grounded in a real workflow.</p>
+            <div className="project-grid">
+              {projects.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}
+            </div>
+            <div className="subsection-title"><div><span className="section-eyebrow">PRODUCT WALKTHROUGH</span><h3>SpendSense screens</h3></div><span className="sample-note">Sample data · UI previews</span></div>
+            <div className="screen-gallery">
+              {spendsensePreviews.map((screen) => (
+                <figure className="screen-card" key={screen.file}>
+                  <div className="phone-frame"><iframe srcDoc={screen.html} title={`SpendSense: ${screen.title}`} loading="lazy" tabIndex={-1} sandbox="" referrerPolicy="no-referrer" /></div>
+                  <figcaption>{screen.title}<span>↗</span></figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+
+          <section className="content-section ai-section" id="ai-work">
+            <SectionHeading eyebrow="APPLIED AI / RETRIEVAL / AUTOMATION" title="AI systems with quality in the loop" />
+            <p className="section-description">LLM features need more than a good prompt. I focus on retrieval quality, grounded answers, confidence and repeatable evaluation.</p>
+            <div className="ai-flow" aria-label="RAG processing and evaluation flow">
+              {["Ingest & chunk", "Retrieve", "Generate", "Score confidence", "Evaluate"].map((step, index) => <div className="flow-step" key={step}><span>0{index + 1}</span>{step}{index < 4 && <b>→</b>}</div>)}
+            </div>
+            <div className="project-grid ai-grid">
+              {aiWork.map((project, index) => <ProjectCard key={project.title} project={project} index={index} label="AI SYSTEM" />)}
+            </div>
+          </section>
+
+          <section className="content-section" id="experience">
+            <SectionHeading eyebrow="CAREER / OWNERSHIP" title="Experience" />
+            <div className="experience-list">
+              {experience.map((item) => (
+                <article className="experience-item" key={`${item.role}-${item.period}`}>
+                  <div className="experience-date">{item.period}</div>
+                  <div className="experience-main"><span className="experience-marker" /><h3>{item.role}</h3><p className="experience-company">{item.company}</p><ul>{item.points.map((point) => <li key={point}>{point}</li>)}</ul></div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="content-section" id="skills">
+            <SectionHeading eyebrow="TOOLS I WORK WITH" title="Engineering toolkit" />
+            <div className="toolkit-grid">
+              {Object.entries(skills).map(([group, items]) => <div className="toolkit-card" key={group}><h3>{group}</h3><ul className="tags">{items.map((item) => <li key={item}>{item}</li>)}</ul></div>)}
+            </div>
+          </section>
+
+          <section className="content-section about-section" id="about">
+            <SectionHeading eyebrow="A LITTLE ABOUT HOW I WORK" title="Curious, practical, end to end." />
+            <div className="about-copy">{about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+            <div className="education-row"><div><span className="section-eyebrow">EDUCATION</span>{education.map((item) => <p key={item.degree}><strong>{item.degree}</strong> · {item.school} <span>{item.period}</span></p>)}</div><div><span className="section-eyebrow">CONTINUOUS LEARNING</span><p>{certifications.join(" · ")}</p></div></div>
+          </section>
+
+          <section className="contact-section" id="contact">
+            <div><p className="section-eyebrow">HAVE A GOOD PROBLEM TO SOLVE?</p><h2>Let&apos;s build something useful.</h2><p>Open to full-stack and AI engineering opportunities.</p></div>
+            <a className="button button-light" href={`mailto:${profile.email}`}>Get in touch <span>↗</span></a>
+          </section>
+          <footer className="dashboard-footer"><span>© {new Date().getFullYear()} {profile.name}</span><div>{profile.links.map((link) => <a key={link.label} href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div><span>Designed &amp; built with care</span></footer>
+        </div>
       </main>
 
-      <footer className="footer">
-        <div className="container">
-          © {new Date().getFullYear()} {profile.name}
-        </div>
-      </footer>
-    </>
+      <nav className="mobile-dock" aria-label="Mobile navigation">
+        {navigation.slice(0, 5).map(([id, label, icon]) => <a href={`#${id}`} key={id} aria-label={label}><span>{icon}</span><small>{label}</small></a>)}
+      </nav>
+    </div>
   );
 }

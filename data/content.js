@@ -141,11 +141,13 @@ export const skills = {
     "REST APIs",
     "Entity Framework Core",
     "Microservices",
+    "FastAPI"
   ],
   Frontend: ["Angular", "React", "HTML5", "CSS3", "Bootstrap"],
   Cloud: ["Microsoft Azure", "Azure Key Vault", "Azure Storage", "Azure Functions"],
   "Generative AI": [
     "Azure OpenAI",
+    "LangGraph",
     "LangChain",
     "RAG",
     "LLM Applications",
