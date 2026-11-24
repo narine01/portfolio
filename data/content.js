@@ -63,13 +63,13 @@ export const projects = [
   },
 ];
 
-// SpendSense app screens (design previews with sample data), served from /public/screens
+// SpendSense screens captured from the running Android app in the API 37 emulator.
 export const spendsenseScreens = [
-  { title: "Expenses", file: "/screens/expenses.html" },
-  { title: "Monthly summary", file: "/screens/summary.html" },
-  { title: "Add expense", file: "/screens/add-expense.html" },
-  { title: "Scan a bill (AI)", file: "/screens/scan-bill.html" },
-  { title: "Ask your spending (AI)", file: "/screens/ask-ai.html" },
+  { title: "Expenses", image: "/screens/expenses.png" },
+  { title: "Monthly summary", image: "/screens/summary.png" },
+  { title: "Add expense", image: "/screens/add-expense.png" },
+  { title: "Scan a bill (AI)", image: "/screens/scan-bill.png" },
+  { title: "Ask your spending (AI)", image: "/screens/ask-ai.png" },
 ];
 
 export const aiWork = [

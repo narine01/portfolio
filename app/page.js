@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import {
   profile,
   about,
@@ -13,14 +11,6 @@ import {
   certifications,
 } from "../data/content";
 import ThemeToggle from "./theme-toggle";
-
-const spendsensePreviews = spendsenseScreens.map((screen) => ({
-  ...screen,
-  html: readFileSync(
-    join(process.cwd(), "public", screen.file.replace(/^\//, "")),
-    "utf8",
-  ),
-}));
 
 const navigation = [
   ["overview", "Overview", "⌂"],
@@ -135,11 +125,11 @@ export default function Home() {
             <div className="project-grid">
               {projects.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}
             </div>
-            <div className="subsection-title"><div><span className="section-eyebrow">PRODUCT WALKTHROUGH</span><h3>SpendSense screens</h3></div><span className="sample-note">Sample data · UI previews</span></div>
+            <div className="subsection-title"><div><span className="section-eyebrow">PRODUCT WALKTHROUGH</span><h3>SpendSense screens</h3></div><span className="sample-note">Real Android captures · Demo data</span></div>
             <div className="screen-gallery">
-              {spendsensePreviews.map((screen) => (
-                <figure className="screen-card" key={screen.file}>
-                  <div className="phone-frame"><iframe srcDoc={screen.html} title={`SpendSense: ${screen.title}`} loading="lazy" tabIndex={-1} sandbox="" referrerPolicy="no-referrer" /></div>
+              {spendsenseScreens.map((screen) => (
+                <figure className="screen-card" key={screen.image}>
+                  <div className="phone-frame"><img src={screen.image} alt={`SpendSense ${screen.title} screen`} loading="lazy" /></div>
                   <figcaption>{screen.title}<span>↗</span></figcaption>
                 </figure>
               ))}
