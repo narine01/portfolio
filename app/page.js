@@ -41,7 +41,7 @@ function ProjectCard({ project, index, label = "PROJECT" }) {
         </div>
       )}
       <div className="project-copy">
-        <span className="project-index">{label} {String(index + 1).padStart(2, "0")}</span>
+        <span className="project-index">{project.badge || label} {String(index + 1).padStart(2, "0")}</span>
         <div className="project-title-row">
           <h3>{project.title}</h3>
           <span className="arrow-mark" aria-hidden="true">↗</span>
