@@ -5,8 +5,8 @@ export const metadata = {
   title: `${profile.name} · ${profile.role}`,
   description: profile.tagline,
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    shortcut: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/favicon.svg?v=2", type: "image/svg+xml" }],
+    shortcut: [{ url: "/favicon.svg?v=2", type: "image/svg+xml" }],
     apple: [{ url: profile.image, type: "image/jpeg" }],
   },
 };
