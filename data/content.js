@@ -42,6 +42,7 @@ export const projects = [
     description:
       "An offline-first Android expense tracker built to explore modern Android development, with two generative AI features: bill scanning that extracts merchant, amount, date and category from a photo or PDF for review before saving, and plain-language Q&A over your own spending.",
     tags: ["Kotlin", "Jetpack Compose", "Room", "Retrofit", "Gemini API"],
+    roadmapNote: "Next up: user authentication, so people can securely sign in and keep their expense data associated with their account.",
     repo: "https://github.com/narine01/SpendSense",
     download: "https://raw.githubusercontent.com/narine01/SpendSense/v1.0.0/releases/SpendSense-v1.0.0.apk",
     permissionNote:

@@ -57,6 +57,12 @@ function ProjectCard({ project, index, label = "PROJECT" }) {
             {project.download && <a href={project.download}>Download Android APK <span>↓</span></a>}
           </div>
         )}
+        {project.roadmapNote && (
+          <aside className="roadmap-note">
+            <strong>Planned next</strong>
+            <p>{project.roadmapNote}</p>
+          </aside>
+        )}
         {project.permissionNote && (
           <aside className="permission-note">
             <strong>Permissions &amp; data access</strong>
