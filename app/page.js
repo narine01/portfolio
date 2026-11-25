@@ -50,11 +50,18 @@ function ProjectCard({ project, index, label = "PROJECT" }) {
         <ul className="tags">
           {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
         </ul>
-        {(project.live || project.repo) && (
+        {(project.live || project.repo || project.download) && (
           <div className="card-links">
             {project.live && <a href={project.live} target="_blank" rel="noreferrer">Live demo <span>↗</span></a>}
             {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Source code <span>↗</span></a>}
+            {project.download && <a href={project.download}>Download Android APK <span>↓</span></a>}
           </div>
+        )}
+        {project.permissionNote && (
+          <aside className="permission-note">
+            <strong>Permissions &amp; data access</strong>
+            <p>{project.permissionNote}</p>
+          </aside>
         )}
       </div>
     </article>

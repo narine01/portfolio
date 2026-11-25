@@ -43,6 +43,9 @@ export const projects = [
       "An offline-first Android expense tracker built to explore modern Android development, with two generative AI features: bill scanning that extracts merchant, amount, date and category from a photo or PDF for review before saving, and plain-language Q&A over your own spending.",
     tags: ["Kotlin", "Jetpack Compose", "Room", "Retrofit", "Gemini API"],
     repo: "https://github.com/narine01/SpendSense",
+    download: "https://raw.githubusercontent.com/narine01/SpendSense/v1.0.0/releases/SpendSense-v1.0.0.apk",
+    permissionNote:
+      "Internet is used for AI requests. Camera access is requested only when you choose in-app bill capture. For an existing bill, Android's document picker gives access only to the photo or PDF you select. Selected bills go to the SpendSense backend for AI extraction; spending questions and recorded expense details go to the backend for answers. Captured bill photos are temporary and deleted after scanning. No contacts, location, or broad photo-library access is requested.",
   },
   {
     title: "SpendSense Backend",
